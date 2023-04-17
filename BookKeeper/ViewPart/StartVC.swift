@@ -22,8 +22,7 @@ final class StartVC: UIViewController {
         view.backgroundColor = .white
         
         addAnimatedLabel()
-        //Double.random(in: 2.0...5.0) вставить вместо 1.0 в withDuration
-        UIView.animate(withDuration: 1.0, animations: {
+        UIView.animate(withDuration: Double.random(in: 2.0...5.0), animations: {
             self.animatedCircle.transform = CGAffineTransform(rotationAngle: .pi)
         }) { _ in
             self.animatedCircle.removeFromSuperview()
