@@ -38,9 +38,4 @@ final class Store {
     func addBook(book: Book) {
         books.append(book)
     }
-    
-    func editBook(indexPath: IndexPath, book: Book) {
-        books.remove(at: indexPath.row)
-        books.append(book)
-    }
 }
