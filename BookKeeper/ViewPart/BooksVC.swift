@@ -47,7 +47,7 @@ final class BooksVC: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc private func filterButtonPressed() {
+    @objc private func filterButtonPressed() { 
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let byNameAction = UIAlertAction(title: "Sort by name", style: .default) { [weak self] _ in

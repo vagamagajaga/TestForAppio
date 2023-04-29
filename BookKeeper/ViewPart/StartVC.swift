@@ -20,8 +20,12 @@ final class StartVC: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        
         addAnimatedLabel()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         UIView.animate(withDuration: Double.random(in: 2.0...5.0), animations: {
             self.animatedCircle.transform = CGAffineTransform(rotationAngle: .pi)
         }) { _ in
