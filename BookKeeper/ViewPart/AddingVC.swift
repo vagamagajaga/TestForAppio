@@ -24,6 +24,12 @@ final class AddingVC: UIViewController {
             return formatter
         }()
     
+    private lazy var dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd.MM.yy"
+            return formatter
+        }()
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
