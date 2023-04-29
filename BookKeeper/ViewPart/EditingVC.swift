@@ -19,6 +19,12 @@ final class EditingVC: UIViewController {
     
     private var addButtonBottomConstraint: NSLayoutConstraint!
     
+    private lazy var dateFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd.MM.yy"
+            return formatter
+        }()
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,13 +39,10 @@ final class EditingVC: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    //MARK: - Methods
-    @objc func datePickerValueChanged(_ sender: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yy"
-        print(dateFormatter)
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
-    
+    //MARK: - Methods
     @objc private func keyboardWillShow(notification: NSNotification) {
         guard let keyboardSize = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         let keyboardHeight = keyboardSize.cgRectValue.height
@@ -67,15 +70,11 @@ final class EditingVC: UIViewController {
     }
     
     private func stringToDate(date: String) -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yy"
         let newDate = dateFormatter.date(from: date) ?? Date()
         return newDate
     }
     
     private func dateToString(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yy"
         let date = dateFormatter.string(from: date)
         return date
     }
